@@ -11,6 +11,7 @@
 		6B04C4C11EE610C1003B94D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B04C4BF1EE610C1003B94D3 /* Main.storyboard */; };
 		6B04C4C31EE610C1003B94D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B04C4C21EE610C1003B94D3 /* Assets.xcassets */; };
 		6B04C4C61EE610C1003B94D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B04C4C41EE610C1003B94D3 /* LaunchScreen.storyboard */; };
+		6B04C4D11EE61149003B94D3 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B04C4D01EE61149003B94D3 /* NetworkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		6B04C4C21EE610C1003B94D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B04C4C51EE610C1003B94D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B04C4C71EE610C1003B94D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B04C4D01EE61149003B94D3 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				6B04C4BB1EE610C1003B94D3 /* AppDelegate.swift */,
 				6B04C4CE1EE610D7003B94D3 /* ViewControllers */,
 				6B04C4CD1EE610CF003B94D3 /* Resources */,
+				6B04C4D21EE61154003B94D3 /* Networking */,
 			);
 			path = Post2;
 			sourceTree = "<group>";
@@ -75,6 +78,14 @@
 				6B04C4BF1EE610C1003B94D3 /* Main.storyboard */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6B04C4D21EE61154003B94D3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				6B04C4D01EE61149003B94D3 /* NetworkController.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B04C4D11EE61149003B94D3 /* NetworkController.swift in Sources */,
 				6B04C4BC1EE610C1003B94D3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
