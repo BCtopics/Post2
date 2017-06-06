@@ -10,12 +10,21 @@ import Foundation
 
 struct Post {
     
+    //MARK: - Keys
+    
+    fileprivate let userKey = "username"
+    fileprivate let textKey = "text"
+    fileprivate let timestampKey = "timestamp"
+    
     //MARK: - Internal Properties
     
     let username: String
     let text: String
     let timestamp: TimeInterval
     let identifier: UUID
+    
+    
+    //MARK: - Initializers
     
     init(username: String, text: String, identifier: UUID? = UUID(), timestamp: TimeInterval? = Date().timeIntervalSince1970 ) {
         
@@ -27,5 +36,19 @@ struct Post {
         self.timestamp = timestamp
         
     }
+    
+    init?(jsonDictionary: [String: Any], identifier: String) {
+        
+        guard let username = jsonDictionary[userKey] as? String,
+            let text = jsonDictionary[textKey] as? String,
+            let timestamp = jsonDictionary[timestampKey] as? Double,
+            let identifier = UUID(uuidString: identifier) else { return nil }
+        
+        self.username = username
+        self.text = text
+        self.timestamp = TimeInterval(floatLiteral: timestamp)
+        self.identifier = identifier
+    }
+    
     
 }
