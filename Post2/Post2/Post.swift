@@ -50,5 +50,15 @@ struct Post {
         self.identifier = identifier
     }
     
+    var jsonRep: [String: Any] {
+        
+        return [userKey: self.username,
+                textKey: self.text,
+                timestampKey: self.timestamp]
+    }
+    
+    var jsonData: Data? {
+        return (try? JSONSerialization.data(withJSONObject: self.jsonRep, options: .prettyPrinted))
+    }
     
 }
