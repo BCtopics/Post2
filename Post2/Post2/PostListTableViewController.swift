@@ -24,6 +24,55 @@ class PostListTableViewController: UITableViewController {
         
     }
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        presentNewPostAlert()
+    }
+    
+    func presentNewPostAlert() {
+        let alertController = UIAlertController(title: "New Post", message: nil, preferredStyle: .alert)
+        
+        var usernameTextField: UITextField?
+        var messageTextField: UITextField?
+        
+        alertController.addTextField { (usernameField) in
+            usernameField.placeholder = "User name"
+            usernameTextField = usernameField
+        }
+        
+        alertController.addTextField { (messageField) in
+            messageField.placeholder = "What would you like to say?"
+            messageTextField = messageField
+        }
+        
+        let postingAction = UIAlertAction(title: "post", style: .default) { (action) in
+            
+            guard let userName = usernameTextField?.text, let messageText = messageTextField?.text else {
+                
+                self.presentError()
+                return
+            }
+            
+            self.postController.addNewPostWith(username: userName, text: messageText)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(postingAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func presentError() {
+        
+        let alertController = UIAlertController(title: "Uh oh!", message: "You may be missing information or have network connectivity issues. Please try again.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
     let postController = PostController()
 
