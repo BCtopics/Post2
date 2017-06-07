@@ -54,9 +54,30 @@ class PostController {
                 self.posts = sortedPosts
                 completion(sortedPosts)
             }
-            
         }
+    }
+    
+    //MARK: - Adding Posts/ PUT Request
+    
+    func addNewPostWith(username: String, text: String) {
         
+        let post = Post(username: username, text: text)
+        
+        guard let requestURL = post.endpoint else { fatalError("URL is nil") }
+        
+        NetworkController.performRequest(for: requestURL, httpMethod: .put, urlParameters: nil, body: post.jsonData) { (data, error) in
+            
+            if error != nil {
+                print("Error: \(error?.localizedDescription)")
+            } else {
+                print("Successfully saved data to endpoint.")
+            }
+            
+            self.fetchPosts(completion: { (post) in
+                // Do nothing :D
+                //FIXME: Fix later
+            })
+        }
     }
 }
 
@@ -65,3 +86,12 @@ protocol PostControllerDelegate: class {
     
     func postsWereUpdatedTo(posts: [Post], on postController: PostController)
 }
+
+
+
+
+
+
+
+
+

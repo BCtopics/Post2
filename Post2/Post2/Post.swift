@@ -23,6 +23,10 @@ struct Post {
     let timestamp: TimeInterval
     let identifier: UUID
     
+    var endpoint: URL? {
+        return PostController.baseURL?.appendingPathComponent(self.identifier.uuidString).appendingPathExtension("json")
+    }
+    
     
     //MARK: - Initializers
     
