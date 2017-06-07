@@ -10,6 +10,21 @@ import UIKit
 
 class PostListTableViewController: UITableViewController {
     
+    @IBAction func refreshControlPulled(_ sender: Any) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        postController.fetchPosts() { (newPosts) in
+            
+            guard let refreshControl = self.refreshControl else { return }
+            refreshControl.endRefreshing()
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+        
+    }
+    
+    
     let postController = PostController()
 
     override func viewDidLoad() {
