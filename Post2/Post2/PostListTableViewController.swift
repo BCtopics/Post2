@@ -14,6 +14,11 @@ class PostListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        postController.delegate = self
     }
     
     // MARK: - Table view data source
@@ -79,4 +84,14 @@ class PostListTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension PostListTableViewController: PostControllerDelegate {
+    
+    func postsWereUpdatedTo(posts: [Post], on postController: PostController) {
+        
+        tableView.reloadData()
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
